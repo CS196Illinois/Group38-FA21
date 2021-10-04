@@ -1,2 +1,3 @@
-I have read throgh Twitter Sentiment Analysis WebApp Using Flask tutorial and started tutorial react. Last two weeks were mid-exam time for me and I did noy move forward too much with react, but I will do more in the following week.
+I have read through Twitter Sentiment Analysis WebApp Using Flask tutorial and started tutorial react. 
 For tutorial of sentiment analysis, I graspe the big idea of data mining by connecting to the Tweepy API, using python for basic data analysis and visulization after retrieving data , and the interation between front end and back end using python and html template. A user case diagram would aslo be benifical for understanding working with different APIs.
+Last two weeks were mid-exam time for me and I did not move forward too much with react, but I will do more in the following week.
