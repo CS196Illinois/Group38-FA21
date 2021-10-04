@@ -1,0 +1,15 @@
+React -->
+- flexible javascript library
+- Reacr component tyoes take in parameters
+  (props) --> short for properties
+- render method takes a description of 
+what you want to see on the screen
+- react.createElement creates new elements 
+to see on screen
+- can also create functional objects like
+buttons
+
+
+Twitter Sent. Analyzer 
+- twitter has an open source accesible code
+- went from -1 to 1
