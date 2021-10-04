@@ -1,0 +1,10 @@
+As part of Spring 1's research, I primarily looked at the tutorials shared by Nick for React and functional components. I wasn't able to research much about sentiment analyzer
+or NLP APIs.
+Since I'm very new to web development, I primarily focused on understanding the terms and common technologies behind javascript, HTML, backend, and frontend components.
+I did setup React, ran a sample tic-tac-toe code, tweaking and playing around with it to get a better grasp of divs, components, styling elements, and the actualy javascript that
+makes the page interactive.
+From my minimal research on the sentiment analyzer, I understood the steps involved in language processing which include, parsing through the source, extracting each word, then
+standardizing it via lower case and correcting for spelling errors, and then making calls to a sentiment analyzer API that returns info on the overall tone and implied tone in
+context.
+I had also fallen sick with flu and severe body ache over the second week which I will make up in the next week through putting in more research while coordinating it with other
+tasks as well.
