@@ -1,0 +1,2 @@
+Completed the Official react tutorial, FreeCodeCamp React Tutorial, and Sentiment Analysis with node-nlp tutorial
+Looked over documentation for the IBM Tone Anaylzer API
