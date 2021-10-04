@@ -1,1 +1,1 @@
-I have
+I have read throgh Twitter Sentiment Analysis WebApp Using Flask tutorial and started tutorial react. Last two weeks were mid-exam time for me and I did noy move forward too much with react, but I will do more in the following week.
