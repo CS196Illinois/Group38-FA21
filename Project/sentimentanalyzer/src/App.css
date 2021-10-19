@@ -1,0 +1,16 @@
+.App {
+  text-align: center;
+  background-color: lightblue;
+}
+.search {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.searchbar {
+  width: 20%;
+}
+.searchbutton {
+  color: white;
+  background-color: blue;
+}
