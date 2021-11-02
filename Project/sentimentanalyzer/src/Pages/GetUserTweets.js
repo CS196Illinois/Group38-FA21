@@ -1,9 +1,8 @@
+import GetSentiment from "../Utils/GetSentiment";
 const GetUserTweets = ({uName}) => {
     return(
         <div>
-            <h1>
-                {uName}
-            </h1>
+            <GetSentiment text={uName}/>
         </div>
 
     );
