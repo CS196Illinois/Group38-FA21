@@ -23,16 +23,22 @@ const GetSentiment = (text) => {
     })
     console.log(toneParamsContent);
     return(<h1>HI</h1>); */
-    const response = fetch('http://localhost:8080/getTone', {
-        method: 'POST',
-        headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            input: text
-        })
-    });
+  //  (async () => {
+        const response = fetch('/getTone', {
+            method: 'POST',
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                input: text
+            })
+        });
+        const tonesList = response['tones'].map((tone) =>
+            <li> {response['tones']["tone_name"]} </li>);
+        return(<ul>{tonesList}</ul>);
+//    })();
+    
 /*     const toneParams = {
         toneInput: { 'text': text },
         contentType: 'text/plain',
@@ -44,8 +50,6 @@ const GetSentiment = (text) => {
     });
     console.log(JSON.stringify(toneAnalysis, null, 2));
     const tones = toneAnalysis["result"]["document_tone"]["tones"]; */
-    const tonesList = response['tones'].map((tone) =>
-            <li> {response['tones']["tone_name"]} </li>);
-    return(<ul>{tonesList}</ul>);
+    
 }
 export default GetSentiment;

@@ -13,7 +13,7 @@ const toneAnalyzer = new ToneAnalyzerV3({
 });
 app.use(express.json());
 app.post('/getTone', (req, res) => {
-    res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.set('Access-Control-Allow-Origin', 'http://localhost:3000/');
     const toneParams = {
         toneInput: { 'text': req.body.text },
         contentType: 'application/json',
@@ -30,9 +30,10 @@ app.post('/getTone', (req, res) => {
             finalList.push(tones[i].tone_name);
         }
     }
+    console.log(finalList);
     res.send({
-        'Access-Control-Allow-Origin' : 'http://localhost:3000',
-        'tones' : finalList,
+        'Access-Control-Allow-Origin' : 'http://localhost:3000/',
+        'tones' : finalList
     })
 })
-app.listen(8080, () => {console.log("Listening on port 8080")});
+app.listen(3000, () => {console.log("Listening on port 3000")});
