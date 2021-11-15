@@ -23,8 +23,8 @@ const GetSentiment = (text) => {
     })
     console.log(toneParamsContent);
     return(<h1>HI</h1>); */
-  //  (async () => {
-        const response = fetch('/getTone', {
+    (async () => {
+        const rawResponse = await fetch('http://localhost:8080/getTone', {
             method: 'POST',
             headers: {
                 "Accept": "application/json",
@@ -34,10 +34,12 @@ const GetSentiment = (text) => {
                 input: text
             })
         });
+        const response = await rawResponse.json();
+        console.log("response" + response);
         const tonesList = response['tones'].map((tone) =>
             <li> {response['tones']["tone_name"]} </li>);
         return(<ul>{tonesList}</ul>);
-//    })();
+    })();
     
 /*     const toneParams = {
         toneInput: { 'text': text },

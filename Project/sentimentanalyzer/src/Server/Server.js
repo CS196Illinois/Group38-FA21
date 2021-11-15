@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const fetch = require('node-fetch');
 const app = express();
 const ToneAnalyzerV3 = require('ibm-watson/tone-analyzer/v3');
@@ -12,8 +13,17 @@ const toneAnalyzer = new ToneAnalyzerV3({
     disableSslVerification: true,
 });
 app.use(express.json());
-app.post('/getTone', (req, res) => {
-    res.set('Access-Control-Allow-Origin', 'http://localhost:3000/');
+var whitelist = ['http://localhost:3000/', 'http://localhost:3000']
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+app.post('/getTone', cors(corsOptions), (req, res) => {
     const toneParams = {
         toneInput: { 'text': req.body.text },
         contentType: 'application/json',
@@ -32,8 +42,7 @@ app.post('/getTone', (req, res) => {
     }
     console.log(finalList);
     res.send({
-        'Access-Control-Allow-Origin' : 'http://localhost:3000/',
         'tones' : finalList
     })
 })
-app.listen(3000, () => {console.log("Listening on port 3000")});
+app.listen(8080, () => {console.log("Listening on port 8080")});
