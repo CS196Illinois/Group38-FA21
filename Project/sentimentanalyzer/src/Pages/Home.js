@@ -12,7 +12,7 @@ const Home = () => {
             <div className="search">
                 <input type="text" placeholder="Enter Twitter Username" height = "300" className="searchbar" value={userName} onChange={(e) => setUserName(e.target.value)}/>
                 <button type="Submit" onClick={()=>{setClicked(!clicked); }} className="searchbutton">Find Emotion</button>
-                { clicked ? <GetUserTweets uName={userName}/> : null}
+                { clicked && <GetUserTweets uName={userName}/>}
             </div>
             
         </div>

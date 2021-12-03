@@ -1,6 +1,6 @@
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
-const fetch = require('node-fetch');
 const app = express();
 const ToneAnalyzerV3 = require('ibm-watson/tone-analyzer/v3');
 const {IamAuthenticator} = require('ibm-watson/auth');
@@ -13,7 +13,11 @@ const toneAnalyzer = new ToneAnalyzerV3({
     disableSslVerification: true,
 });
 app.use(express.json());
-var whitelist = ['http://localhost:3000/', 'http://localhost:3000']
+app.use(express.static(path.resolve(__dirname, '../sentimentanalyzer/build')));
+app.get('/', function (req, res) {
+  res.sendFile(path.resolve(__dirname, '../sentimentanalyzer/build/index.html'));
+});
+var whitelist = ['http://localhost:3000/', 'http://localhost:3000', 'http://localhost:3000/getSentiment']
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
@@ -23,14 +27,14 @@ var corsOptions = {
     }
   }
 }
-app.post('/getTone', cors(corsOptions), (req, res) => {
+app.post('/getTone', async (req, corsOptions, res) => {
     const toneParams = {
-        toneInput: { 'text': req.body.text },
+        toneInput: { 'text': req.body.input },
         contentType: 'application/json',
         sentences: false,
     };
     console.log(toneParams);
-    const toneAnalysis = toneAnalyzer.tone(toneParams).catch(err => {
+    const toneAnalysis = await toneAnalyzer.tone(toneParams).catch(err => {
         console.log('error:', err);
     });
     const tones = toneAnalysis.result.document_tone.tones;
@@ -40,7 +44,7 @@ app.post('/getTone', cors(corsOptions), (req, res) => {
             finalList.push(tones[i].tone_name);
         }
     }
-    console.log(finalList);
+    console.log("finalList" + finalList);
     res.send({
         'tones' : finalList
     })
