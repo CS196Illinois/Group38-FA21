@@ -14,10 +14,11 @@ const toneAnalyzer = new ToneAnalyzerV3({
 });
 app.use(express.json());
 app.use(express.static(path.resolve(__dirname, '../sentimentanalyzer/build')));
+app.use(cors());
 app.get('/', function (req, res) {
   res.sendFile(path.resolve(__dirname, '../sentimentanalyzer/build/index.html'));
 });
-var whitelist = ['http://localhost:3000/', 'http://localhost:3000', 'http://localhost:3000/getSentiment']
+var whitelist = ['http://localhost:3000/', 'http://localhost:3000', 'http://localhost:3000/Analysis']
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
@@ -27,9 +28,10 @@ var corsOptions = {
     }
   }
 }
-app.post('/getTone', async (req, corsOptions, res) => {
+app.post('/getTone', async (req, res) => {
+  console.log("getting tone" + JSON.stringify(req.body));
     const toneParams = {
-        toneInput: { 'text': req.body.input },
+        toneInput: { 'text': req.body.input.text },
         contentType: 'application/json',
         sentences: false,
     };
