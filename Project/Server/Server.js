@@ -32,7 +32,7 @@ app.post('/getTone', async (req, res) => {
   console.log("getting tone" + JSON.stringify(req.body));
     const toneParams = {
         toneInput: { 'text': req.body.input.text },
-        contentType: 'application/json',
+        contentType: 'text/html',
         sentences: false,
     };
     console.log(toneParams);
@@ -42,9 +42,7 @@ app.post('/getTone', async (req, res) => {
     const tones = toneAnalysis.result.document_tone.tones;
     const finalList = [];
     for (var i = 0; i < tones.length; i++) {
-        if (tones[i].score >= 0.75) {
-            finalList.push(tones[i].tone_name);
-        }
+      finalList.push(tones[i].tone_name);
     }
     console.log("finalList" + finalList);
     res.send({
