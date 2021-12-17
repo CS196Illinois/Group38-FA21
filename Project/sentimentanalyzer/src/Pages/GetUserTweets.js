@@ -1,13 +1,10 @@
-import ReactDOM from "react-dom";
-const GetUserTweets = () => {
-    const element = (
+import GetSentiment from "../Utils/GetSentiment";
+const GetUserTweets = ({uName}) => {
+    return(
         <div>
-            <h1>
-                Dummy Text
-            </h1>
+            <GetSentiment text={uName}/>
         </div>
 
     );
-    ReactDOM.render(element, document.getElementById("root"));
 };
 export default GetUserTweets;
